@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gps.taximeter">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="gps_taxi_meter"
+        android:label="GPS Taxi Meter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
