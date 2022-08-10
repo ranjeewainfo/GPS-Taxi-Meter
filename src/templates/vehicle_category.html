@@ -1,0 +1,25 @@
+<script id="vehicle_category" type="text/template">
+
+  {{#categories}}
+
+  <div class="check-item" id="category{{id}}_item">
+    
+    <input type="radio" class="radio_circle" name="category" value="{{id}}" id="category{{id}}_input" hidden required>
+
+    <label for="category{{id}}_input" class="check-label row">
+
+        <div class="col-sm-3 col-4 p-0">
+            <img class="category-img" src="src/images/category{{id}}.png">
+        </div>
+        <div class="col-sm-9 col-8 p-0">
+            <span class="text"><b>{{category}}</b> </span> &nbsp;
+            <span class="text-muted"> {{note}}</span>
+        </div>
+
+    </label>
+
+  </div>
+  {{/categories}}
+
+
+</script>

@@ -1,0 +1,37 @@
+{
+
+    "categories": [{
+        "id": 0,
+        "category": "TUK",
+        "note": "text text text text text text "
+    }, {
+        "id": 1,
+        "category": "Taxi",
+        "note": "text text text text text text "
+    }, {
+        "id": 13,
+        "category": "Hatchback",
+        "note": "text text text text text text "
+    }, {
+        "id": 3,
+        "category": "Car",
+        "note": "text text text text text text "
+    }, {
+        "id": 8,
+        "category": "SUV",
+        "note": "text text text text text text "
+    }, {
+        "id": 5,
+        "category": "Mini Van",
+        "note": "text text text text text text "
+    }, {
+        "id": 7,
+        "category": "Van",
+        "note": "text text text text text text "
+    }, {
+        "id": 9,
+        "category": "Bus",
+        "note": "text text text text text text "
+    }]
+
+}

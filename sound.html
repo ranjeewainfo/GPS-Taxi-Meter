@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sound</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="src/styles/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="src/styles/styles.css" />
+	
+</head>
+
+<body>
+ 
+<audio id="myAudio">
+  <source src="src/sound/ticktac.aac" type="audio/aac">
+  <source src="src/sound/ticktac.wav" type="audio/wav">
+  <source src="src/sound/ticktac.mp3" type="audio/mpeg">
+  <source src="src/sound/ticktac.ogg" type="audio/ogg">
+
+</audio>
+
+<body onload="start()">
+<button onclick="pauseAudio()" type="button">Pause Sound</button> 
+<button onclick="enableLoop()" type="button">Enable loop</button>
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
+
+function pauseAudio() { 
+  x.pause(); 
+} 
+
+function enableLoop() { 
+  x.loop = true;
+  x.load();
+} 
+
+function disableLoop() { 
+  x.loop = false;
+  x.load();
+} 
+
+function checkLoop() { 
+  alert(x.loop);
+} 
+function start(){
+    enableLoop();
+    playAudio();
+
+}
+</script> 
+
+</body>
+</html>

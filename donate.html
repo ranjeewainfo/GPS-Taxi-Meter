@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Donate</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="src/styles/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="src/styles/styles.css" />
+</head>
+
+<body>
+
+	<div class="box center">
+
+		<br>
+
+		<h2>Donate</h2>
+
+		<div class="p-2">
+			This is a GPS based taxi meter you can use for free for ever. But we
+			know there an end some day. Our mission is to provide the service for free till to
+			end. IF you feel this software helps to you, and if would like to give a
+			contribution it will helps us. Your help will keep this software live
+			for ever. Thank you.
+		</div>
+
+		<div>
+			<a href="https://paypal.me/pools/c/8eOmJCCEQk">Donate to project</a><br>
+			<a href="https://paypal.me/pools/c/8eOmJCCEQk">
+				<img alt="Donate GPS TAXI" height="111" src="src/images/donate.png">
+			</a>
+		</div>
+
+		<div class="p-2">
+			Or you can contact us for customized taxi management systems. Whatsapp: +94764321100			
+		</div>
+
+
+	</div>
+	
+<!--  ==============================Message Us===================================== -->
+<?php require $path . "src/templates/scripts.php"; ?>
+<script type="text/javascript">
+    (function() {
+        var options = {
+            whatsapp: "+94764321100", // WhatsApp number
+            viber: "+94764321100", // Viber number
+            call_to_action: "Message us", // Call to action
+            button_color: "#A8CE50", // Color of button
+            position: "right", // Position may be 'right' or 'left'
+            order: "whatsapp,viber", // Order of buttons
+        };
+        var proto = document.location.protocol,
+            host = "getbutton.io",
+            url = proto + "//static." + host;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function() {
+            WhWidgetSendButton.init(host, proto, options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    })();
+</script>
+
+
+</body>
+
+</html>
