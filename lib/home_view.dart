@@ -10,9 +10,14 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   bool isPageLoaded = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: const Text('GPD Taxi Meter'),
+      ),
       body: Stack(
         children: [
           InAppWebView(
@@ -42,9 +47,21 @@ class _HomeViewState extends State<HomeView> {
             },
           ),
           isPageLoaded
-              ? SizedBox.shrink()
-              : Center(
-                  child: CircularProgressIndicator(),
+              ? const SizedBox.shrink()
+              : Container(
+                  color: Colors.black,
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: const Center(
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                        color: Colors.yellow,
+                      ),
+                    ),
+                  ),
                 )
         ],
       ),
