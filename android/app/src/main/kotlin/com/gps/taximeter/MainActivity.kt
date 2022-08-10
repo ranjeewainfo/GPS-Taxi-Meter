@@ -1,4 +1,4 @@
-package com.example.gps_taxi_meter
+package com.gps.taximeter
 
 import io.flutter.embedding.android.FlutterActivity
 

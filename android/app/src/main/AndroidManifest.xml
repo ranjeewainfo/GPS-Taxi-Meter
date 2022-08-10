@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gps_taxi_meter">
+    package="com.gps.taximeter">
    <application
         android:label="gps_taxi_meter"
         android:name="${applicationName}"
