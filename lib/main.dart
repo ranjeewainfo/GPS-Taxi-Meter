@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gps_taxi_meter/home_view.dart';
+import 'package:gps_taxi_meter/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeView(),
+      home: const SplashView(),
     );
   }
 }
