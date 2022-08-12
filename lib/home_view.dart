@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -17,10 +19,19 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text('GPD Taxi Meter'),
+        centerTitle: true,
       ),
       body: Stack(
         children: [
-          InAppWebView(
+          const WebviewScaffold(
+            url: 'https://athalanga.lk/apps/gpsmeter/',
+            geolocationEnabled: true,
+            allowFileURLs: true,
+            withJavascript: true,
+            displayZoomControls: false,
+            scrollBar: false,
+          ),
+          /*InAppWebView(
             initialUrlRequest: URLRequest(
                 url: Uri.parse('https://athalanga.lk/apps/gpsmeter/')),
             androidOnPermissionRequest: (controller, origin, resources) async {
@@ -30,11 +41,17 @@ class _HomeViewState extends State<HomeView> {
             },
             initialOptions: InAppWebViewGroupOptions(
               crossPlatform: InAppWebViewOptions(
-                useShouldOverrideUrlLoading: true,
-                mediaPlaybackRequiresUserGesture: false,
-              ),
+                  useShouldOverrideUrlLoading: true,
+                  mediaPlaybackRequiresUserGesture: false,
+                  verticalScrollBarEnabled: false,
+                  javaScriptEnabled: true,
+                  javaScriptCanOpenWindowsAutomatically: true,
+                  supportZoom: false),
               android: AndroidInAppWebViewOptions(
                 useHybridComposition: true,
+                allowFileAccess: true,
+                allowContentAccess: true,
+                geolocationEnabled: true,
               ),
               ios: IOSInAppWebViewOptions(
                 allowsInlineMediaPlayback: true,
@@ -45,8 +62,8 @@ class _HomeViewState extends State<HomeView> {
                 isPageLoaded = true;
               });
             },
-          ),
-          isPageLoaded
+          ),*/
+          /*isPageLoaded
               ? const SizedBox.shrink()
               : Container(
                   color: Colors.black,
@@ -62,7 +79,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ),
-                )
+                )*/
         ],
       ),
     );

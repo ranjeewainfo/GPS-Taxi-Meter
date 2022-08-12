@@ -12,26 +12,28 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
+    checkPermission();
     super.initState();
   }
 
   checkPermission() async {
     if (await Permission.location.request().isGranted &&
-        await Permission.mediaLibrary.request().isGranted) {
+        await Permission.storage.request().isGranted) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const HomeView()));
     } else {
       Map<Permission, PermissionStatus> statuses = await [
         Permission.location,
-        Permission.mediaLibrary,
+        Permission.storage,
       ].request();
       if (statuses[Permission.location]!.isGranted &&
-          statuses[Permission.mediaLibrary]!.isGranted) {
-        Navigator.of(context).pushReplacement(
+          statuses[Permission.storage]!.isGranted) {
+        Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const HomeView()));
       } else {
         showPermissionDialog(context);
       }
+
     }
   }
 
@@ -66,10 +68,16 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Container(
-        child: Text('GPS Taximeter'),
-      )),
+      body: Container(
+        color: Colors.black,
+        child: Center(
+          child: Text(
+      'GPS Taximeter',
+      style: TextStyle(
+            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
     );
   }
 }
