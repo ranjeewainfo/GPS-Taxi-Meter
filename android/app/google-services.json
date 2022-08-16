@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274712865813",
+    "project_id": "gps-taximeter",
+    "storage_bucket": "gps-taximeter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274712865813:android:5496c5d9d02bccc2d6321c",
+        "android_client_info": {
+          "package_name": "com.gps.taximeter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274712865813-b482771s49rht21t7cnp8k47tg97nhkm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvtyKKWu0TgBnfcugQ1D1jwR8lRL7ei1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274712865813-b482771s49rht21t7cnp8k47tg97nhkm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,12 +28,11 @@ class _SplashViewState extends State<SplashView> {
       ].request();
       if (statuses[Permission.location]!.isGranted &&
           statuses[Permission.storage]!.isGranted) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const HomeView()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const HomeView()));
       } else {
         showPermissionDialog(context);
       }
-
     }
   }
 
@@ -72,9 +71,9 @@ class _SplashViewState extends State<SplashView> {
         color: Colors.black,
         child: Center(
           child: Text(
-      'GPS Taximeter',
-      style: TextStyle(
-            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+            'GPS Taximeter',
+            style: TextStyle(
+                color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
       ),
