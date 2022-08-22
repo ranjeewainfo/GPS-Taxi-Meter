@@ -5,17 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:gps_taxi_meter/splash_view.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-  print('Handling a background message ${message.data}');
   AwesomeNotifications().createNotificationFromJsonData(message.data);
 }
 
 void subcribeGPSTaxi() async {
   await FirebaseMessaging.instance
       .subscribeToTopic("GPSTaxi")
-      .then((value) => print("GPSTaxi subscribed"));
+      .then((value){});
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
@@ -23,6 +20,12 @@ void subcribeGPSTaxi() async {
             channelKey: 'key1',
             title: message.notification?.title,
             body: message.notification?.body));
+
+    // message.data['home'];
+  });
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    // message.data['home']
   });
 }
 
@@ -34,8 +37,7 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   AwesomeNotifications().initialize(
-      // set the icon to null if you want to use the default app icon
-      'resource://drawable/res_app_icon',
+      'resource://mipmap/ic_launcher',
       [
         NotificationChannel(
             channelGroupKey: 'basic_channel_group',
