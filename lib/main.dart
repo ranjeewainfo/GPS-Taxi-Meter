@@ -2,7 +2,10 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gps_taxi_meter/splash_view.dart';
+
+import 'remote_url_web_view.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -10,9 +13,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 void subcribeGPSTaxi() async {
-  await FirebaseMessaging.instance
-      .subscribeToTopic("GPSTaxi")
-      .then((value){});
+  await FirebaseMessaging.instance.subscribeToTopic("GPSTaxi").then((value) {});
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
@@ -21,12 +22,16 @@ void subcribeGPSTaxi() async {
             title: message.notification?.title,
             body: message.notification?.body));
 
-    // message.data['home'];
+    navigateURL(message.data['home']);
   });
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    // message.data['home']
+    navigateURL(message.data['home']);
   });
+}
+
+navigateURL(String url) {
+Get.to(RemoteURLWebView(url: url));
 }
 
 Future<void> main() async {
@@ -69,7 +74,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const SplashView(),
     );
