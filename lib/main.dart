@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gps_taxi_meter/home_view.dart';
 import 'package:gps_taxi_meter/splash_view.dart';
 
 import 'remote_url_web_view.dart';
@@ -14,6 +15,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void subcribeGPSTaxi() async {
   await FirebaseMessaging.instance.subscribeToTopic("GPSTaxi").then((value) {});
+
+  FirebaseMessaging.instance.getInitialMessage().then((remoteMessage){
+    if(remoteMessage!=null){
+      navigateURL(remoteMessage.data['home'], true);
+    }
+  });
+
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
@@ -22,16 +30,16 @@ void subcribeGPSTaxi() async {
             title: message.notification?.title,
             body: message.notification?.body));
 
-    navigateURL(message.data['home']);
+    navigateURL(message.data['home'], false);
   });
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    navigateURL(message.data['home']);
+    navigateURL(message.data['home'], true);
   });
 }
 
-navigateURL(String url) {
-Get.to(RemoteURLWebView(url: url));
+navigateURL(String url, bool shouldGoHome) {
+  Get.to(RemoteURLWebView(url: url, shouldGoHome: shouldGoHome,));
 }
 
 Future<void> main() async {

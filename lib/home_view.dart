@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:get/get.dart';
+import 'package:gps_taxi_meter/app_constants.dart';
+import 'package:gps_taxi_meter/remote_url_web_view.dart';
 import 'package:wakelock/wakelock.dart';
 
 class HomeView extends StatefulWidget {
@@ -14,6 +17,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     Wakelock.enable();
+    if(AppConstants.url!=null){
+      Get.to(RemoteURLWebView(url: AppConstants.url));
+    }
     super.initState();
   }
 
