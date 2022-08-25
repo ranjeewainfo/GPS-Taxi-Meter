@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gps_taxi_meter/home_view.dart';
 import 'package:gps_taxi_meter/splash_view.dart';
 
 import 'remote_url_web_view.dart';
@@ -16,8 +15,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 void subcribeGPSTaxi() async {
   await FirebaseMessaging.instance.subscribeToTopic("GPSTaxi").then((value) {});
 
-  FirebaseMessaging.instance.getInitialMessage().then((remoteMessage){
-    if(remoteMessage!=null){
+  FirebaseMessaging.instance.getInitialMessage().then((remoteMessage) {
+    if (remoteMessage != null) {
       navigateURL(remoteMessage.data['home'], true);
     }
   });
@@ -39,7 +38,10 @@ void subcribeGPSTaxi() async {
 }
 
 navigateURL(String url, bool shouldGoHome) {
-  Get.to(RemoteURLWebView(url: url, shouldGoHome: shouldGoHome,));
+  Get.to(RemoteURLWebView(
+    url: url,
+    shouldGoHome: shouldGoHome,
+  ));
 }
 
 Future<void> main() async {
@@ -50,23 +52,25 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   AwesomeNotifications().initialize(
-      'resource://mipmap/ic_launcher',
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'key1',
-            channelName: 'Basic notifications',
-            channelDescription: 'GPS Taximeter',
-            defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white)
-      ],
-      // Channel groups are only visual and are not required
-      channelGroups: [
-        NotificationChannelGroup(
-            channelGroupkey: 'basic_channel_group',
-            channelGroupName: 'Basic group')
-      ],
-      debug: true);
+    'resource://mipmap/ic_launcher',
+    [
+      NotificationChannel(
+          channelGroupKey: 'basic_channel_group',
+          channelKey: 'key1',
+          channelName: 'Basic notifications',
+          channelDescription: 'GPS Taximeter',
+          defaultColor: Color(0xFF9D50DD),
+          channelShowBadge: true,
+          ledColor: Colors.white)
+    ],
+    // Channel groups are only visual and are not required
+    channelGroups: [
+      NotificationChannelGroup(
+          channelGroupkey: 'basic_channel_group',
+          channelGroupName: 'Basic group')
+    ],
+    debug: true,
+  );
 
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     alert: true,

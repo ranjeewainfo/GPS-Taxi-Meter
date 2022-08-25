@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_webview_pro/webview_flutter.dart';
 import 'package:get/get.dart';
 
 import 'home_view.dart';
@@ -35,8 +36,34 @@ class _RemoteURLWebViewState extends State<RemoteURLWebView> {
           title: const Text('Notification'),
           centerTitle: true,
         ),
-        body: Container(color: Colors.white,
-        child: Center(child: Text(widget.url!),),),
+         body: Builder(builder: (BuildContext context) {
+            return WebView(
+              initialUrl: widget.url,
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) {
+
+              },
+              onProgress: (int progress) {
+                print("WebView is loading (progress : $progress%)");
+              },
+              navigationDelegate: (NavigationRequest request) {
+                if (request.url.startsWith('https://www.youtube.com/')) {
+                  print('blocking navigation to $request}');
+                  return NavigationDecision.prevent;
+                }
+                print('allowing navigation to $request');
+                return NavigationDecision.navigate;
+              },
+              onPageStarted: (String url) {
+                print('Page started loading: $url');
+              },
+              onPageFinished: (String url) {
+                print('Page finished loading: $url');
+              },
+              gestureNavigationEnabled: true,
+              geolocationEnabled: true,
+            );
+          })
         /*body: WebviewScaffold(
           url: widget.url!,
           geolocationEnabled: true,
